@@ -24,5 +24,21 @@ public:
         loadFromFile();
     }
     
-    // Функции будут добавлены позже
+   void addStudent() {
+        Student s;
+        s.id = nextId++;
+        
+        cout << "Введите фамилию: ";
+        cin >> s.lastName;
+        cout << "Введите имя: ";
+        cin >> s.firstName;
+        cout << "Введите возраст: ";
+        cin >> s.age;
+        cout << "Введите средний балл: ";
+        cin >> s.gpa;
+        
+        students.push_back(s);
+        saveToFile();
+        cout << "Студент добавлен! ID: " << s.id << endl;
+    }
 };
