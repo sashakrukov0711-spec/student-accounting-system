@@ -41,4 +41,18 @@ public:
         saveToFile();
         cout << "Студент добавлен! ID: " << s.id << endl;
     }
+    void showAll() {
+        if (students.empty()) {
+            cout << "Список пуст!" << endl;
+            return;
+        }
+        
+        cout << "\n=== СПИСОК СТУДЕНТОВ ===\n";
+        for (const auto& s : students) {
+            cout << "ID: " << s.id 
+                 << " | " << s.lastName << " " << s.firstName
+                 << " | Возраст: " << s.age
+                 << " | Балл: " << s.gpa << endl;
+        }
+    }
 };
