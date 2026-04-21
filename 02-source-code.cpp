@@ -55,4 +55,39 @@ public:
                  << " | Балл: " << s.gpa << endl;
         }
     }
+    void searchByLastName() {
+        string searchName;
+        cout << "Введите фамилию для поиска: ";
+        cin >> searchName;
+        
+        bool found = false;
+        for (const auto& s : students) {
+            if (s.lastName == searchName) {
+                cout << "Найден: " << s.lastName << " " << s.firstName 
+                     << ", возраст: " << s.age << ", балл: " << s.gpa << endl;
+                found = true;
+            }
+        }
+        
+        if (!found) {
+            cout << "Студент с фамилией " << searchName << " не найден!" << endl;
+        }
+    }
+
+    void deleteStudent() {
+        int id;
+        cout << "Введите ID студента для удаления: ";
+        cin >> id;
+        
+        for (size_t i = 0; i < students.size(); i++) {
+            if (students[i].id == id) {
+                students.erase(students.begin() + i);
+                saveToFile();
+                cout << "Студент удален!" << endl;
+                return;
+            }
+        }
+        
+        cout << "Студент с ID " << id << " не найден!" << endl;
+    }
 };
