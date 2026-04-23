@@ -120,3 +120,29 @@ public:
         cout << "Студент с ID " << id << " не найден!" << endl;
     }
 };
+int main() {
+    StudentGroup group;
+    int choice;
+    
+    do {
+        cout << "\n=== МЕНЮ ===\n";
+        cout << "1. Добавить студента\n";
+        cout << "2. Показать всех\n";
+        cout << "3. Найти по фамилии\n";
+        cout << "4. Удалить студента\n";
+        cout << "5. Выход\n";
+        cout << "Выберите: ";
+        cin >> choice;
+        
+        switch (choice) {
+            case 1: group.addStudent(); break;
+            case 2: group.showAll(); break;
+            case 3: group.searchByLastName(); break;
+            case 4: group.deleteStudent(); break;
+            case 5: cout << "Пока!\n"; break;
+            default: cout << "Неверный выбор!\n";
+        }
+    } while (choice != 5);
+    
+    return 0;
+}
