@@ -18,6 +18,35 @@ private:
     vector<Student> students;
     int nextId = 1;
     string fileName = "students.txt";
+private:
+    void saveToFile() {
+        ofstream file(fileName);
+        for (const auto& s : students) {
+            file << s.id << "|"
+                 << s.lastName << "|"
+                 << s.firstName << "|"
+                 << s.age << "|"
+                 << s.gpa << endl;
+        }
+        file.close();
+    }
+
+    void loadFromFile() {
+        ifstream file(fileName);
+        if (!file.is_open()) return;
+        
+        Student s;
+        char delimiter;
+        while (file >> s.id >> delimiter && delimiter == '|' &&
+               file >> s.lastName >> delimiter && delimiter == '|' &&
+               file >> s.firstName >> delimiter && delimiter == '|' &&
+               file >> s.age >> delimiter && delimiter == '|' &&
+               file >> s.gpa) {
+            students.push_back(s);
+            if (s.id >= nextId) nextId = s.id + 1;
+        }
+        file.close();
+    }
 
 public:
     StudentGroup() {
